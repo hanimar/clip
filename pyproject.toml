@@ -1,0 +1,20 @@
+[project]
+name = "kursach"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = [
+	"torch",
+	"torchvision",
+	"jupyter>=1.1.1",
+	"pycocotools>=2.0.8",
+]
+
+[tool.uv.sources]
+torch = [{ index = "pytorch" },]
+torchvision = [{ index = "pytorch" },]
+torchaudio = [{ index = "pytorch" },]
+
+[[tool.uv.index]]
+name = "pytorch"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
