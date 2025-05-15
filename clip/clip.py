@@ -16,7 +16,7 @@ class ConvBnRelu(nn.Sequential):
         )
 
 
-class VisionTransformer(nn.Module):
+class ImageEncoder(nn.Module):
     def __init__(self):
         super().__init__()
         self.emb = nn.Sequential(
@@ -38,7 +38,7 @@ class VisionTransformer(nn.Module):
         return self.transformer(embs)
 
 
-class TextTransformer(nn.Module):
+class TextEncoder(nn.Module):
     def __init__(self):
         super().__init__()
         self.emb = nn.Embedding(50257, 256)
@@ -56,8 +56,8 @@ class TextTransformer(nn.Module):
 class CLIPModel(nn.Module):
     def __init__(self):
         super().__init__()
-        self.img_encoder = VisionTransformer()
-        self.text_encoder = TextTransformer()
+        self.img_encoder = ImageEncoder()
+        self.text_encoder = TextEncoder()
 
     def encode_image(self, image):
         enc = self.img_encoder(image)
