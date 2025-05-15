@@ -65,3 +65,9 @@ class Img2TextTransformer(nn.Module):
     def forward(self, images, input_ids, attention_mask):
         image_tokens = self.encoder(images)
         return self.decoder(image_tokens, input_ids, attention_mask)
+
+    def forward_single(self, image, input_ids):
+        images = image[None, ...]
+        input_ids = input_ids[None, ...]
+        attention_mask = torch.ones_like(input_ids)
+        return self.forward(images, input_ids, attention_mask)
